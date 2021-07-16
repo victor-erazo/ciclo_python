@@ -1,0 +1,5 @@
+Cree una variable llamada nuevo id, y la determine 
+de la siguiente forma
+
+nuevo_id = '-'.join([nuevo_id, '-'.join([credito_id, persona.get(
+                'nombres')[0], persona.get('apellidos')[0]])])

@@ -1,0 +1,97 @@
+"""Función para diagnosticar síntomas."""
+
+
+def diagSintoma(paciente: dict) -> dict:
+    """Devuelve resultado de los síntomas de acuerdo a diagrama de árbol.
+
+    Args:
+        paciente: información del paciente.
+
+    return:
+        dict: diagnostico, diccionario con la información de los sintomas
+    """
+
+    # Lista de resultados
+
+    resultados = ['No tiene síntomas',
+                  'Presencia de síntomas',
+                  'Dengue',
+                  'Gripa',
+                  'Otitis']
+    cont = 0
+
+    #  Pasar el diccionario a booleano (excepto el primer campo)
+
+    for i in paciente.keys():
+
+        cont += 1
+
+        if cont != 1:
+
+            if paciente[i] == 'Si':
+
+                paciente[i] = True
+
+            else:
+
+                paciente[i] = False
+
+#Variables intermedias para agilizar los condicionales.
+
+    diag_ta = paciente['diag_ta']
+    diag_pa = paciente['diag_pa']
+    diag_do = paciente['diag_do']
+    diag_dg = paciente['diag_dg']
+    resultado = resultados[1]  # Resultado por defecto.
+    estado = False  # Estado por defecto.
+
+    #  Diagrama de árbol, solo se precisan los casos específicos.
+
+    if diag_ta:
+
+        if diag_pa and diag_do and diag_dg:
+
+            resultado = resultados[2]
+            estado = True
+
+        elif not diag_pa and not diag_do and diag_dg:
+
+            resultado = resultados[3]
+            estado = True
+
+    else:
+
+        if diag_pa and diag_do and diag_dg:
+
+            resultado = resultados[4]
+            estado = True
+
+        elif not diag_pa and not (diag_do or diag_dg):
+
+            resultado = resultados[0]
+
+    diagnostico = {'id_diagnostico': paciente['id_diagnostico'],
+                   'resultado': resultado,
+                   'estado': estado}
+
+    return diagnostico
+
+#Diccionarios
+
+paciente1 = {'id_diagnostico': 'd-001',
+             'diag_ta': 'Si',
+             'diag_do': 'No',
+             'diag_pa': 'No',
+             'diag_dg': 'Si'}
+
+paciente2 = {'id_diagnostico': 'd-002',
+             'diag_ta': 'Si',
+             'diag_do': 'No',
+             'diag_pa': 'No',
+             'diag_dg': 'No'}
+
+paciente3 = {'id_diagnostico': 'd-003',
+             'diag_ta': 'No',
+             'diag_do': 'No',
+             'diag_pa': 'No',
+             'diag_dg': 'No'}

@@ -1,0 +1,25 @@
+{
+    "clientes": [
+        {
+            "pr_nombre": "Sigrid",
+            "sg_nombre": "Mannock",
+            "edad": 27,
+            "salario": 7.17
+        },
+        {
+            "pr_nombre": "Joe",
+            "sg_nombre": "Hinners",
+            "edad": 31,
+            "salario": [
+                1.9,
+                5.5
+            ]
+        },
+        {
+            "pr_nombre": "Theodoric",
+            "sg_nombre": "Rivers",
+            "edad": 36,
+            "salario": 1.11
+        }
+    ]
+}

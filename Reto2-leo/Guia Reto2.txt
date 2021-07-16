@@ -1,0 +1,88 @@
+def diagSintomas(var_pat):
+    diccionario = {
+        'id_diagnostico':var_pat['id_diagPaciente'],
+        'resultado': 'enfermedad',
+        'estado': 'id_estado'
+        }
+    if var_pat['diag_ta'] == 'si':
+        if var_pat['diag_pa'] == 'si':
+            if var_pat['diag_do'] == 'si':
+                if var_pat['diag_dg'] =='si':
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Dengue'
+                    resultado['estado']='True'
+                    print (resultado)
+                else:
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Presencia de Sintomas'
+                    resultado['estado']='False'
+                    print (resultado)
+            else:
+                resultado=diccionario.copy()
+                resultado['resultado']='Presencia de Sintomas'
+                resultado['estado']='False'
+                print (resultado)
+
+        elif var_pat['diag_do'] == 'no':
+            if var_pat['diag_do'] == 'si':
+                resultado=diccionario.copy()
+                resultado['resultado']='Presencia de Sintomas'
+                resultado['estado']='False'
+                print (resultado)
+                
+            elif  var_pat['diag_do'] == 'no':
+                if var_pat['diag_dg'] == 'si':
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Gripa'
+                    resultado['estado']='True'
+                    print (resultado)
+                else:
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Presencia de Sintomas'
+                    resultado['estado']='False'
+                    print (resultado)
+    else:
+
+        if var_pat['diap_pa'] == 'si':
+
+            if var_pat['diap_do'] == 'si':
+
+                if var_pat['diag_dg'] =='si':
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Otitis'
+                    resultado['estado']='True'
+                    print (resultado)
+                else:
+                    resultado=diccionario.copy()
+                    resultado['resultado']='Presencia de Sintomas'
+                    resultado['estado']='False'
+                    print (resultado)
+            else: 
+
+                resultado=diccionario.copy()
+                resultado['resultado']='Presencia de Sintomas'
+                resultado['estado']='False'
+                print (resultado)
+        else: 
+            if (var_pat['diag_do'] or var_pat['diag_dg']) == 'si':
+                resultado=diccionario.copy()
+                resultado['resultado']='Presencia de Sintomas'
+                resultado['estado']='False'
+                print (resultado)
+            else:
+                resultado=diccionario.copy()
+                resultado['resultado']='No tiene sintomas'
+                resultado['estado']='False'
+                print (resultado)
+    
+    return (var_pat)
+
+var_pat = {
+    'id_diagPaciente':'d001',
+    'diag_ta':'si',
+    'diag_pa':'no',
+    'diag_do':'no',
+    'diag_dg':'si'
+    }
+
+diagSintomas(var_pat)
